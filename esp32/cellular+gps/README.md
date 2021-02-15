@@ -36,20 +36,17 @@ Once the Arduino IDE is installed, we need to add the ESP32 board information. T
 ```https://dl.espressif.com/dl/package_esp32_index.json, http://arduino.esp8266.com/stable/package_esp8266com_index.json```
 
 These steps are shown below:
-![Wiring Diagram](diagrams/arduino/arduino-ide-preferences-location.jpg)
-![Wiring Diagram](diagrams/arduino/arduino-ide-board-urls.jpg)
+![Arduino IDE Preferences Location](diagrams/arduino/arduino-ide-preferences-location.jpg)
+![Arduino IDE Adding Board URLs](diagrams/arduino/arduino-ide-board-urls.jpg)
 
 The last step is to select the correct board and COM port, for the LILYGO ESP32 you should select `Tools > Board > ESP32 Dev Module`
-![Wiring Diagram](diagrams/arduino/arduino-ide-esp32.jpg)
+![Arduino IDE Select Board Type](diagrams/arduino/arduino-ide-esp32.jpg)
 
 If you have multiple COM ports listed and are unsure which to select, you will need to open the Windows Device Manager to look at the names
 
-![Wiring Diagram](diagrams/general/device-manager-com.jpg)
-
-
+![Device Manager Identify COM Device](diagrams/general/device-manager-com.jpg)
 
 We're now ready to start programming!
-
 
 ### Code! :)
 The code which is supported by the ESP32 and the Arduino IDE is a subset of C++, there are alternatives that you can use for programming ESP32s, such as Node.JS using [NodeMCU](https://www.nodemcu.com/), or Python using [MicroPython](https://micropython.org/).
@@ -57,8 +54,21 @@ The code which is supported by the ESP32 and the Arduino IDE is a subset of C++,
 We provide three example files which test each individual function:
 - Send SMS: https://github.com/untrobotics/workshops/blob/main/esp32/cellular%2Bgps/modules/sms/SMS.ino
 - Connect to the internet via GPRS (2G): https://github.com/untrobotics/workshops/blob/main/esp32/cellular%2Bgps/modules/gprs/GRPS.ino
-- Receive GPS Info: 
+- Receive GPS Info: https://github.com/untrobotics/workshops/blob/main/esp32/cellular%2Bgps/modules/gps/GPS.ino
 
-Once each of those functions are working as expected, you can combine them to report the GPS location of the ESP32 to a server every few seconds/minutes. This sample file can be found here: 
+In order to run any of these files, you simply need to make sure the ESP32 is plugged into your computer via USB, and click on the "Upload" button in top left corner of the Arduino IDE. This will write the code to your ESP32, and reboot it. Now, each time the ESP32 is powered up or rebooted it will run that program on a loop. If you run into errors during uploading, you may need to unplug the GPS module from the 3.3V power pin during the upload too.
+
+![Arduino IDE Upload Button](diagrams/arduino/arduino-ide-upload-button.jpg)
+
+Some of the files will require installing additional libraries, fortunately this is incredibly easy with the Arduino IDE. Simple go to `Tools > Manage Libraries` and then install:
+- TinyGSM
+- StreamDebugger
+- Adafruit GPS Library
+
+![Arduino IDE Adding a Library](diagrams/arduino/arduino-ide-installing-a-library.jpg)
+
+Furthermore, both manufactuerers provide plenty of sample code that you can use too! Adafruit's GPS module code is found [here](https://github.com/adafruit/Adafruit_GPS). and LILYGO's ESP32 and Cellular code is found [here](https://github.com/Xinyuan-LilyGO/LilyGo-T-Call-SIM800).
+
+Once each of those functions are working as expected, you can combine them to report the GPS location of the ESP32 to a server every few seconds/minutes. This sample file can be found here: https://github.com/untrobotics/workshops/blob/main/esp32/cellular%2Bgps/modules/combined/ESP32_with_cellular_gps.ino
 
 If you need help setting up a server to receive the GPS coordinates, please see our previous "Servers 'n' Stuff" workshop.
