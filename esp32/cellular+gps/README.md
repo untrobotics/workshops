@@ -56,6 +56,10 @@ We provide three example files which test each individual function:
 - Connect to the internet via GPRS (2G): https://github.com/untrobotics/workshops/blob/main/esp32/cellular%2Bgps/modules/gprs/GRPS.ino
 - Receive GPS Info: https://github.com/untrobotics/workshops/blob/main/esp32/cellular%2Bgps/modules/gps/GPS.ino
 
+In order to run any of these files, you simply need to make sure the ESP32 is plugged into your computer via USB, and click on the "Upload" button in top left corner of the Arduino IDE. This will write the code to your ESP32, and reboot it. Now, each time the ESP32 is powered up or rebooted it will run that program on a loop. If you run into errors during uploading, you may need to unplug the GPS module from the 3.3V power pin during the upload too.
+
+![Arduino IDE Upload Button](diagrams/arduino/arduino-ide-upload-button.jpg)
+
 Some of the files will require installing additional libraries, fortunately this is incredibly easy with the Arduino IDE. Simple go to `Tools > Manage Libraries` and then install:
 - TinyGSM
 - StreamDebugger
